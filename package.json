@@ -1,5 +1,5 @@
 {
-  "name": "MyGarage",
+  "name": "my-garage",
   "version": "1.0.0",
   "description": "Garage app to buy and sell cars",
   "main": "server.js",
