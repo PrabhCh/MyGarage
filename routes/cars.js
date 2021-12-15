@@ -64,15 +64,16 @@ router.put('/:id', auth, async (req, res) => {
   // Build car object
   const carFields = {};
 
-  if (name) carFields.name = name;
-  if (email) carFields.email = email;
-  if (phone) carFields.phone = phone;
+  if (year) carFields.year = year;
+  if (make) carFields.make = make;
+  if (model) carFields.model = model;
+  if (price) carFields.price = price;
   if (type) carFields.type = type;
 
   try {
     let car = await Car.findById(req.params.id);
 
-    if (!contact) return res.status(404).json({ msg: 'Car not found' });
+    if (!car) return res.status(404).json({ msg: 'Car not found' });
 
     // Make sure user owns contact
     if (car.user.toString() !== req.user.id) {
