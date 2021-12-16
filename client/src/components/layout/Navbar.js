@@ -1,7 +1,7 @@
 import React, { Fragment, useContext } from 'react';
 import PropTypes from 'prop-types';
 import FontAwesome from 'react-fontawesome';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import AuthContext from '../../context/auth/authContext';
 // import ContactContext from '../../context/contact/contactContext';
 
@@ -45,6 +45,20 @@ const Navbar = ({ title, icon }) => {
       <h1>
         <i className={icon} /> {title}
       </h1>
+      <ul>
+        <li>
+          <Link to='/'>Home</Link>
+        </li>
+        <li>
+          <Link to='/about'>About</Link>
+        </li>
+        <li>
+          <Link to='/buy'>Buy</Link>
+        </li>
+        <li>
+          <Link to='/sell'>Sell</Link>
+        </li>
+      </ul>
       {/* <ul>{isAuthenticated ? authLinks : guestLinks}</ul> */}
     </div>
   );

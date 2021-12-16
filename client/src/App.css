@@ -2,11 +2,12 @@
 
 /* Global Styles */
 :root {
-  --primary-color: #003699;
+  --primary-color: #11b521;
   --dark-color: #333333;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
+  --blue-color: #003699;
 }
 
 * {
@@ -268,6 +269,11 @@ img {
 .badge-success,
 .alert-success {
   background: var(--success-color);
+  color: #fff;
+}
+
+.badge-blue {
+  background: var(--blue-color);
   color: #fff;
 }
 

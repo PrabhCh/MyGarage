@@ -33,13 +33,14 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { year, make, model, price, type } = req.body;
+    const { year, make, model, odometer, price, type } = req.body;
 
     try {
       const newCar = new Car({
         year,
         make,
         model,
+        odometer,
         price,
         type,
         user: req.user.id
@@ -59,7 +60,7 @@ router.post(
 // @desc      Update car
 // @access    Private
 router.put('/:id', auth, async (req, res) => {
-  const { year, make, model, price, type } = req.body;
+  const { year, make, model, odometer, price, type } = req.body;
 
   // Build car object
   const carFields = {};
@@ -67,6 +68,7 @@ router.put('/:id', auth, async (req, res) => {
   if (year) carFields.year = year;
   if (make) carFields.make = make;
   if (model) carFields.model = model;
+  if (odometer) carFields.odometer = odometer;
   if (price) carFields.price = price;
   if (type) carFields.type = type;
 

@@ -19,6 +19,9 @@ const CarSchema = mongoose.Schema({
   price: {
     type: String
   },
+  odometer: {
+    type: String
+  },
   type: {
     type: String,
     default: 'Used'
