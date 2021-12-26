@@ -1,10 +1,13 @@
 import React from 'react';
 import Cars from '../cars/Cars';
+import CarForm from '../cars/CarForm';
 
 const Sell = () => {
   return (
     <div className='grid-2'>
-      <div>{/* Car Form */}</div>
+      <div>
+        <CarForm />
+      </div>
       <div>
         <Cars />
       </div>

@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import CarContext from './carContext';
 import carReducer from './carReducer';
@@ -52,6 +52,10 @@ const CarState = (props) => {
   const [state, dispatch] = useReducer(carReducer, initialState);
 
   // Add Car
+  const addCar = (car) => {
+    car.id = uuidv4();
+    dispatch({ type: ADD_CAR, payload: car });
+  };
 
   // Delete Car
 
@@ -68,7 +72,8 @@ const CarState = (props) => {
   return (
     <CarContext.Provider
       value={{
-        cars: state.cars
+        cars: state.cars,
+        addCar
       }}
     >
       {props.children}

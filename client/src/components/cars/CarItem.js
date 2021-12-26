@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const CarItem = ({ car }) => {
   const { id, year, make, model, odometer, price, type } = car;
@@ -28,8 +29,16 @@ const CarItem = ({ car }) => {
           </li>
         )}
       </ul>
+      <p>
+        <button className='btn btn-dark btn-sm'>Edit</button>
+        <button className='btn btn-danger btn-sm'>Delete</button>
+      </p>
     </div>
   );
+};
+
+CarItem.propTypes = {
+  car: PropTypes.object.isRequired
 };
 
 export default CarItem;
