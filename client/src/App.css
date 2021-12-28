@@ -8,6 +8,7 @@
   --danger-color: #dc3545;
   --success-color: #28a745;
   --blue-color: #003699;
+  --light-color: #444;
 }
 
 * {
@@ -79,6 +80,10 @@ img {
   color: var(--dark-color);
 }
 
+.text-danger {
+  color: var(--danger-color);
+}
+
 .text-center {
   text-align: center;
 }
@@ -89,6 +94,25 @@ img {
 
 .text-left {
   text-align: left;
+}
+
+.box-buy {
+  /* background: var(--light-color); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: 80vh;
+  border-radius: 10px;
+}
+.box-sell {
+  /* background: var(--light-color); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: 80vh;
+  border-radius: 10px;
 }
 
 /* Cards */
