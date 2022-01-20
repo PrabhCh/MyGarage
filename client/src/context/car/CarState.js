@@ -46,7 +46,8 @@ const CarState = (props) => {
         price: '$22,000',
         type: 'used'
       }
-    ]
+    ],
+    current: null
   };
 
   const [state, dispatch] = useReducer(carReducer, initialState);
@@ -58,12 +59,24 @@ const CarState = (props) => {
   };
 
   // Delete Car
+  const deleteCar = (id) => {
+    dispatch({ type: DELETE_CAR, payload: id });
+  };
 
   // Set Current Car
+  const setCurrent = (car) => {
+    dispatch({ type: SET_CURRENT, payload: car });
+  };
 
   // Clear Current Car
+  const clearCurrent = () => {
+    dispatch({ type: CLEAR_CURRENT });
+  };
 
   // Update Car
+  const updateCar = (car) => {
+    dispatch({ type: UPDATE_CAR, payload: car });
+  };
 
   // Filter Cars
 
@@ -73,7 +86,12 @@ const CarState = (props) => {
     <CarContext.Provider
       value={{
         cars: state.cars,
-        addCar
+        current: state.current,
+        addCar,
+        deleteCar,
+        setCurrent,
+        clearCurrent,
+        updateCar
       }}
     >
       {props.children}

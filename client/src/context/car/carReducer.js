@@ -19,6 +19,29 @@ const carReducer = (state, action) => {
         cars: [action.payload, ...state.cars],
         loading: false
       };
+    case UPDATE_CAR:
+      return {
+        ...state,
+        cars: state.cars.map((car) =>
+          car.id === action.payload.id ? action.payload : car
+        ),
+        loading: false
+      };
+    case DELETE_CAR:
+      return {
+        ...state,
+        cars: state.cars.filter((car) => car.id !== action.payload)
+      };
+    case SET_CURRENT:
+      return {
+        ...state,
+        current: action.payload
+      };
+    case CLEAR_CURRENT:
+      return {
+        ...state,
+        current: null
+      };
     default:
       return state;
   }

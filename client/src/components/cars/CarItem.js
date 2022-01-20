@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import CarContext from '../../context/car/carContext';
 
 const CarItem = ({ car }) => {
+  const carContext = useContext(CarContext);
+  const { deleteCar, setCurrent, clearCurrent } = carContext;
+
   const { id, year, make, model, odometer, price, type } = car;
+
+  const onDelete = () => {
+    deleteCar(id);
+    clearCurrent();
+  };
 
   return (
     <div className='card bg-light'>
@@ -30,8 +39,12 @@ const CarItem = ({ car }) => {
         )}
       </ul>
       <p>
-        <button className='btn btn-dark btn-sm'>Edit</button>
-        <button className='btn btn-danger btn-sm'>Delete</button>
+        <button className='btn btn-dark btn-sm' onClick={() => setCurrent(car)}>
+          Edit
+        </button>
+        <button className='btn btn-danger btn-sm' onClick={onDelete}>
+          Delete
+        </button>
       </p>
     </div>
   );

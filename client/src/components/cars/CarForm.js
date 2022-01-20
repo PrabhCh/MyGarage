@@ -1,8 +1,23 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import CarContext from '../../context/car/carContext';
 
 const CarForm = () => {
   const carContext = useContext(CarContext);
+
+  const { addCar, updateCar, current, clearCurrent } = carContext;
+
+  useEffect(() => {
+    if (current !== null) {
+      setCar(current);
+    } else {
+      setCar({
+        name: '',
+        email: '',
+        phone: '',
+        type: 'personal'
+      });
+    }
+  }, [carContext, current]);
 
   const [car, setCar] = useState({
     year: '',
@@ -19,20 +34,21 @@ const CarForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    carContext.addCar(car);
-    setCar({
-      year: '',
-      make: '',
-      model: '',
-      odometer: '',
-      price: '',
-      type: 'used'
-    });
+    if (current === null) {
+      addCar(car);
+    } else {
+      updateCar(car);
+    }
+    clearAll();
+  };
+
+  const clearAll = () => {
+    clearCurrent();
   };
 
   return (
     <form onSubmit={onSubmit}>
-      <h2 className='text-primary'>Add Car</h2>
+      <h2 className='text-primary'>{current ? 'Edit Car' : 'Add Car'}</h2>
       <input
         type='text'
         placeholder='Year'
@@ -88,10 +104,17 @@ const CarForm = () => {
       <div>
         <input
           type='submit'
-          value='Add Car'
+          value={current ? 'Update Car' : 'Add Car'}
           className='btn btn-primary btn-block'
         />
       </div>
+      {current && (
+        <div>
+          <button className='btn btn-light btn-block' onClick={clearAll}>
+            Clear
+          </button>
+        </div>
+      )}
     </form>
   );
 };
