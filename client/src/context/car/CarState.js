@@ -47,7 +47,8 @@ const CarState = (props) => {
         type: 'used'
       }
     ],
-    current: null
+    current: null,
+    filtered: null
   };
 
   const [state, dispatch] = useReducer(carReducer, initialState);
@@ -79,19 +80,28 @@ const CarState = (props) => {
   };
 
   // Filter Cars
+  const filterCars = (text) => {
+    dispatch({ type: FILTER_CARS, payload: text });
+  };
 
   // CLear Filter
+  const clearFilter = () => {
+    dispatch({ type: CLEAR_FILTER });
+  };
 
   return (
     <CarContext.Provider
       value={{
         cars: state.cars,
         current: state.current,
+        filtered: state.filtered,
         addCar,
         deleteCar,
         setCurrent,
         clearCurrent,
-        updateCar
+        updateCar,
+        filterCars,
+        clearFilter
       }}
     >
       {props.children}

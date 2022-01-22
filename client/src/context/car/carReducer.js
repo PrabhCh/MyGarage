@@ -42,6 +42,19 @@ const carReducer = (state, action) => {
         ...state,
         current: null
       };
+    case FILTER_CARS:
+      return {
+        ...state,
+        filtered: state.cars.filter((car) => {
+          const regex = new RegExp(`${action.payload}`, 'gi');
+          return car.make.match(regex) || car.model.match(regex);
+        })
+      };
+    case CLEAR_FILTER:
+      return {
+        ...state,
+        filtered: null
+      };
     default:
       return state;
   }

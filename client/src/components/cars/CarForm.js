@@ -11,10 +11,12 @@ const CarForm = () => {
       setCar(current);
     } else {
       setCar({
-        name: '',
-        email: '',
-        phone: '',
-        type: 'personal'
+        year: '',
+        make: '',
+        model: '',
+        odometer: '',
+        price: '',
+        type: 'used'
       });
     }
   }, [carContext, current]);
